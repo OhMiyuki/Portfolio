@@ -1,11 +1,227 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>GitHubの動作テスト</h1>
-</body>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScriptまとめ</title>
+        <meta name="description" content="簡単なWebサイトを作ってみよう！" />
+        <link rel="stylesheet" href="css/destyle.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Zen+Kaku+Gothic+New&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <!-- <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        /> -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <!-- ②ローディング画面（面白い動きやデザインを取り入れると高得点） -->
+        <div class="loading-screen active">
+            <div class="loader"></div>
+        </div>
+
+        <header>
+            <!-- TOPに戻るボタン -->
+            <!-- <a href="#" class="topButton"> <span>TOP</span></a> -->
+            <a href="#" class="topButton">
+                <img src="images/SVG/topButton.svg" alt="トップボタン" />
+            </a>
+
+            <!-- ヘッダー　ロゴ&メニュー -->
+            <div id="headerWrap">
+                <h1>
+                    <a href="#"
+                        ><div id="logo">
+                            <img src="images/myname.png" alt="ロゴ" /></div
+                    ></a>
+                </h1>
+                <!-- ドロワーメニュー（ハンバーガーメニュー） REF:1002drawer -->
+                <!----- 1つ目のパーツ・ドロワーボタン ----->
+                <button id="drawerButton">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!----- ２つ目のパーツ・見えないメニュー ----->
+                <nav>
+                    <ul id="menu">
+                        <li><a href="#">About</a></li>
+                        <li><a href="works.html">Work</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li>
+                            <a href="https://www.instagram.com/minunmia/"
+                                ><img
+                                    src="images/SVG/ingIcon.svg"
+                                    alt="instagramアイコン"
+                            /></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="SliderSection">
+                <!-- Swiperを使ってスライダーを実装　自動再生されるようにして、画面の端まで伸びるスライダー。それ以外の動きやギミックを入れたい場合は自由に！REF:1016slider -->
+
+                <!-- Slider main container -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <img
+                                src="images/watercolor.png"
+                                alt="青と黄色の水彩画"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="images/watercolor02.png"
+                                alt="飛行機雲の水彩画"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="images/watercolor03.png"
+                                alt="青とピンクの水彩画"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="images/bookcover.png"
+                                alt="本のカバーに使用された水彩画"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="images/coupleportrait.jpg"
+                                alt="カップルの似顔絵"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/towel02.jpg" alt="てぬぐい" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="images/sisters.jpg"
+                                alt="姉妹が踊る画像"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="images/GoldenSlumber.jpg"
+                                alt="西日で輝く水彩画"
+                            />
+                        </div>
+                        <div class="swiper-slide">
+                            <img
+                                src="images/pinkpainting.png"
+                                alt="ピンクの絵"
+                            />
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <!-- <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div> -->
+
+                    <!-- If we need scrollbar -->
+                    <!-- <div class="swiper-scrollbar"></div> -->
+                </div>
+
+                <!--------------------- スライダー以降 --------------------->
+            </section>
+            <div class="contentsWrap">
+                <section id="ButtonSection">
+                    <!-- ボタンを押したらデザインが変更されるギミックを作って組み込む。ギミックは自由に設計してOK：色が変わったり文字が大きくなるもの、画像が入れ替わるもの。複雑なギミックを組めたら高得点！ -->
+                </section>
+                <section id="ScrollSection">
+                    <!-- 画面に入った時にアニメーションが発生する仕組み＝スクロール検知を作る。画像やテキストが画面に入ったらアニメーションする。最低４つpタグや画像を動かす。アニメーションの種類は一つでもよし、分岐させる場合は何種類でもOK。これ以外のsection(slider, button)もスクロール検知を実装すると加点対象。 -->
+                    <h2 class="target animate__animated animate__pulse">
+                        About
+                    </h2>
+                    <div class="aboutWrap">
+                        <div id="portrait">
+                            <img src="images/myportrait.JPG" alt="肖像写真" />
+                        </div>
+                        <p>
+                            自分の表現で社会とどう関われるのか模索しています。<br />
+                            グラフィックデザインやイラストレーションを通して社会との関わり方を模索中。神戸市外国語大学を卒業後、空港勤務やインターナショナルシェアハウスでの共同生活を経て、現在は個人制作に集中しています。<br />
+                            水彩表現や写真をお求めの方、その他のご要望などお持ちの方、メニューのEMAILよりお送りください。
+                        </p>
+                    </div>
+                </section>
+
+                <!--------------- 追加コンテンツ ---------------->
+                <section id="ModalSection">
+                    <h2 class="target animate__animated animate__pulse">
+                        Works
+                    </h2>
+                    <!-- モーダルウィンドウを実装：テキストとSwiperのスライドをいれる。MicroModal.jsを使って実装。 -->
+                    <div id="worksWrap">
+                        <div class="workimage">
+                            <img src="images/bookcover.png" alt="装丁" />
+                        </div>
+                        <div class="workimage">
+                            <img
+                                src="images/coupleportrait.jpg"
+                                alt="カップルの似顔絵"
+                            />
+                        </div>
+                        <div class="workimage">
+                            <img
+                                src="images/towel02.jpg"
+                                alt="ジョバンニの小屋10周年記念ノベルティ"
+                            />
+                        </div>
+                        <div class="workimage">
+                            <img src="images/watercolormts.png" alt="装丁" />
+                        </div>
+                        <div class="workimage">
+                            <img src="images/blueworld.png" alt="仮画像" />
+                        </div>
+                        <div class="workimage">
+                            <img
+                                src="images/postcards.JPG"
+                                alt="水彩画ポストカード"
+                            />
+                        </div>
+                    </div>
+                    <!-- workページへ飛ぶボタン -->
+                    <div class="moreButton">
+                        <button>
+                            <a href="#">MORE</a>
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- 組み込む以外にもWebサイトとして魅力的な内容にしよう：架空のお店、ブランド、ポートフォリオなど。全４回程度で完成するくらいのボリュームでOK！ -->
+        <!-- 3つのセクションと3つの機能（ドロワーメニュー・TOPボタン・ローディング画面）は必須・追加コンテンツ（Modal Window）は任意。それ以外にもJavaScriptで機能を作ってみたい場合はsectionを追加して作ってOK -->
+        <footer>
+            <p><small>&copy;2024 Miyuki OKABE.</small></p>
+        </footer>
+        <script src="js/common.js"></script>
+        <script src="js/if_scrollObservation.js"></script>
+        <script src="js/loading.js"></script>
+    </body>
 </html>
