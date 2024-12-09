@@ -1,0 +1,417 @@
+/************************** 外部CSS読み込み ***************************/
+/* CSS変数やサイトテンプレート */
+@import url(template.css);
+/* CSSアニメーション */
+@import url(keyframes.css);
+/* jsなどでのギミック */
+@import url(plugins.css);
+/* worksページ */
+@import url(works.css);
+
+/************************** CSS変数 ***************************/
+
+:root {
+    --backGroundColor: #e7e7eb;
+    --accentColor: #ea5506;
+    --darkColor: #3f4551;
+    --subColor: #007bbf;
+    --whiteColor: #fcfcfc;
+    --lightblueColor: rgb(189, 221, 222);
+}
+
+/************************** サイト共通 ***************************/
+
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* スライダー以降のコンテンツ幅 */
+.contentsWrap {
+    max-width: 1024px;
+    margin-inline: auto;
+    padding-inline: 3rem;
+    /* border: 2px solid red; */
+}
+
+/* 背景色をつける範囲があれば包む */
+/* .backgroundWrap {
+    background-color: var(--backGroundColor);
+} */
+
+h2 {
+    margin-top: 112px;
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* h2アニメーション */
+main .target {
+    opacity: 0;
+    transition: all 0.3s linear;
+}
+
+main .target.lockon {
+    opacity: 1;
+}
+
+/************************** フォント ***************************/
+/* <uniquifier>: Use a unique and descriptive class name
+ <weight>: Use a value from 100 to 900 */
+
+body {
+    font-family: "Lexend", "Zen Kaku Gothic New", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.875rem;
+    color: var(--darkColor);
+}
+
+/**************** ローディング画面 ******************/
+
+.loading-screen {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    transition: opacity 3s linear, visibility 1s linear;
+    background-color: rgb(0, 54, 96);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 60px;
+    height: 25px;
+    border: 2px solid;
+    box-sizing: border-box;
+    border-radius: 50%;
+    display: grid;
+    animation: l2 2s infinite linear;
+}
+.loader:before,
+.loader:after {
+    content: "";
+    grid-area: 1/1;
+    border: inherit;
+    border-radius: 50%;
+    animation: inherit;
+    animation-duration: 3s;
+}
+.loader:after {
+    --s: -1;
+}
+@keyframes l2 {
+    100% {
+        transform: rotate(calc(var(--s, 1) * 1turn));
+    }
+}
+/* JSで付与するクラス */
+.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-screen:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/******************* header **********************/
+header #headerWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 1rem;
+    width: 100%;
+    z-index: 100000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* opacity: 0.5; */
+}
+
+header h1 {
+    width: 180px;
+    height: 100px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#drawerButton {
+    display: none;
+}
+
+/********** メニュー項目 ***********/
+header nav ul {
+    font-weight: 350;
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+header nav ul li a {
+    padding: 1rem;
+    display: block;
+    transition: all 0.3s linear;
+    text-align: center;
+}
+
+header nav ul li a:hover {
+    background-color: var(--lightblueColor);
+}
+
+/********************* main ***********************/
+
+/*********************** スライダー ************************/
+.swiper,
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+/* 中の画像に対してobjectfitをかける */
+.swiper-slide img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+}
+
+/******************** TOPボタン ********************/
+.topButton {
+    /* font-size: 1.3rem; */
+    /* letter-spacing: 0.05em; */
+    /* display: block; */
+    /* width: 100%;
+    height: 100%; */
+    width: 90px;
+    aspect-ratio: 1/1;
+    /* border-radius: 50%; */
+    /* background-color: rgb(76, 168, 229); */
+    /* color: white; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    position: fixed;
+    right: 0.75rem;
+    bottom: 1.75rem;
+    opacity: 0;
+    z-index: 100000;
+    transition: all 0.3s linear;
+}
+
+.topButton.active {
+    opacity: 1;
+}
+
+/********************** About ********************/
+
+/* About背景あしらい */
+/* #ScrollSection {
+    background-image: url(../images/SVG/sparkling.svg);
+    background-repeat: no-repeat;
+    background-size: 200px;
+    /* background-position: 10px, 10px; */
+/* } */
+#ScrollSection h2 {
+    position: relative;
+}
+
+#ScrollSection h2::before {
+    content: "";
+    display: inline-block;
+    width: 100px;
+    background-image: url(../images/SVG/sparkling.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* z-index: 100000000; */
+}
+
+.aboutWrap {
+    display: flex;
+    /* justify-content: space-evenly; */
+    gap: 2rem;
+}
+
+.aboutWrap #portrait {
+    flex-basis: 50%;
+}
+
+.aboutWrap p {
+    flex-basis: 40%;
+}
+/********************** Works ********************/
+#worksWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.workimage {
+    flex-basis: calc((100% / 3) - (2rem / 3));
+    aspect-ratio: 1/1;
+    /* border: 2px solid red; */
+}
+
+.workimage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#worksWrap .moreButton {
+    margin-top: 24px;
+    text-align: right;
+}
+
+#worksWrap .more button a {
+    display: block;
+    background-color: var(--accentColor);
+    color: var(--whiteColor);
+    padding: 8px 38px;
+    border-radius: 3px;
+}
+/********************* フッター **********************/
+footer {
+    margin-block-start: 112px;
+    border-top: solid 2px lightgrey;
+    /* background-color: var(--lightblueColor); */
+    padding-block: 500px;
+    margin-inline: 30px;
+    text-align: center;
+}
+
+footer small {
+    font-size: 1rem;
+    color: var(--darkColor);
+    font-weight: 200;
+}
+
+/********************* メディアクエリ **********************/
+@media screen and (max-width: 600px) {
+    /* ドロワーボタン */
+    #drawerButton {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        background-color: rgb(74, 72, 119);
+        display: block;
+        z-index: 100000;
+        border-radius: 0 0 0 8px;
+        opacity: 0.7;
+    }
+
+    #drawerButton span {
+        width: 60%;
+        height: 4px;
+        display: block;
+        background-color: white;
+        position: absolute;
+        left: 20%;
+        transition: all 0.3s linear;
+    }
+
+    #drawerButton span:nth-child(1) {
+        top: 10px;
+    }
+
+    #drawerButton span:nth-child(2) {
+        top: 18px;
+    }
+
+    #drawerButton span:nth-child(3) {
+        bottom: 10px;
+    }
+
+    /* 3本線のアニメーションにはクラスのつけ外しでアニメをつくる。CSSセレクターにはHTMLに現在存在していないクラスやidも先にデザインを作っておくことができる。 */
+
+    /* .close{} */
+    /* クラス「close」というのを先に作っておいて、JavaScriptでこのクラスをつけ外してデザインを変える */
+
+    /* JavaScriptで#drawerButtonがついている要素に、この.closeをつけ外してデザインを変える */
+
+    #drawerButton.close span:nth-child(1) {
+        transform: rotate(-45deg);
+        top: 18px;
+    }
+    #drawerButton.close span:nth-child(2) {
+        transform: scale(0);
+    }
+    #drawerButton.close span:nth-child(3) {
+        transform: rotate(45deg);
+        top: 18px;
+    }
+
+    /* クラス名の前に半角スペースを開けない。.close要素のついたドロワーボタンという指定。 */
+
+    /* 見えないメニュー */
+    header nav ul {
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: -100vh;
+        transition: all 0.3s linear;
+    }
+
+    header nav #menu.open {
+        top: 0;
+    }
+
+    /*************** about  ****************/
+    .aboutWrap {
+        flex-direction: column;
+    }
+
+    /* #worksWrap {
+        flex-direction: column;
+    } */
+    #worksWrap {
+        flex-direction: column; /* 縦に表示 */
+        align-items: center; /* 中央揃え */
+        flex-wrap: nowrap;
+        display: block;
+    }
+
+    .workimage {
+        aspect-ratio: 1/1;
+        flex-basis: 100%; /* 幅を100%に設定 */
+        /* margin-bottom: 1rem; 下にスペースを追加 */
+    }
+}
+
+/* JavaScriptでつけ外しするクラスかつ、HTMLには書いていないクラス */
+/*
+.close = #drawerbuttonがついている要素につけ外し
+.open = #menuがついている要素につけ外し
+*/
+
+/* ここからWorks */
